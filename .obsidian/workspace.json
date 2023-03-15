@@ -1,0 +1,174 @@
+{
+  "main": {
+    "id": "422bf8df3e16f4fc",
+    "type": "split",
+    "children": [
+      {
+        "id": "d47ca910d23b18dd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1b3c37a301f98b76",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "broscience.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cfd9f4a742485ef9",
+    "type": "split",
+    "children": [
+      {
+        "id": "83642d83cf636bd9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4ccbcdde13c899f0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "62568ce12e9248e3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "fa71e8c9298666bf",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "95a0e7b73751c904",
+    "type": "split",
+    "children": [
+      {
+        "id": "4d527afa2f63c858",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8f18cff32b6fc222",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "broscience.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8004dfe1c2320e74",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "broscience.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6327deb383cf72e6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "66e0b64672317dad",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "broscience.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "4ccbcdde13c899f0",
+  "lastOpenFiles": [
+    "screenshots/broscience_7.png",
+    "broscience.md",
+    "screenshots/broscience_6.png",
+    "screenshots/broscience_5.png",
+    "Pasted image 20230314171417.png",
+    "screenshots/broscience_4.png",
+    "screenshots/broscience_3.png",
+    "screenshots/broscience_2.png",
+    "README.md",
+    "screenshots/broscience_0.png",
+    "screenshots/broscience_1.png",
+    "inject.md",
+    "Reconnaisance.md",
+    "reconnaisance.md",
+    "0_html_fundamentals/2_creating_lists.md",
+    "0_html_fundamentals/3_linking_documents.md",
+    "2_javascript_fundamentals",
+    "1_html_and_css",
+    "0_html_fundamentals/1_displaying_text.md",
+    "1_displaying_text.md",
+    "2_creating_lists.md",
+    "0_working_with_html_docs.md"
+  ]
+}
