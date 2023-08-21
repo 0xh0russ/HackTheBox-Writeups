@@ -1,5 +1,6 @@
 # 0xh0russ's HtB Notes
 
+Note: *This repo is formatted using obsidian md so highlights and links to sections within the same document might not work nicely on github*
 ## What this is
 
 This is a collection of my own personal notes that I take while working through HackTheBox machines. I am taking these notes because I am trying to improve my note taking skills because these are essential for vulnerability research and penetration testing.
