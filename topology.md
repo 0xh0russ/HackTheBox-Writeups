@@ -114,7 +114,7 @@ If I can crack this hash I can see if the credentials are re-used for `ssh`.
 ## Password Cracking
 
 To begin I just ran `hashid` to figure out what kind of hash I'm dealing with. I didn't want to copy the hash by hand so I used and online [OCR tool](https://www.newocr.com/). *Careful, there are a lot of ads.*
-- Here, thank me later: `$apr1$1ONUB/S2$58eeNVirnRDB5zAIbIxTY0`
+- Here, thank me later: `$apr1$1ONUB/S2$58eeNVirnRDB5zAIbIxTY0`   
 ![MD5 | 600](./screenshots/topology_hashid.png)
 
 Next, I cracked the hash using a dictionary attack with `hashcat` and `rockyou.txt`. It took about 2 minutes.
