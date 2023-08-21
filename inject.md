@@ -12,16 +12,16 @@
 
 Highlighted sections are the ones that directly led to advancing access.
 
-1. [[inject#Reconnaisance | Reconnaisance]]
-2. [[inject#Exploiting LFI | Exploiting LFI]]
-3. [[inject#Spring Framework | Spring Framework]]
-4. [[inject#RCE to Reverse Shell | RCE to Revshell]] -> ==\[user frank\]==
-5. [[inject#Pivoting | Pivoting]] -> ==[user phil]==
-6. [[inject#LinPeas | LinPEAS]]
-7. [[inject#Ansible | Ansible]]
-8. [[inject#Evil Playbook | Evil Playbook]] -> ==[root]==
+1. [Reconnaissance](#reconnaissance)
+2. [Exploiting LFI](#exploiting-lfi)
+3. [Spring Framework](#spring-framework)
+4. [RCE to Reverse Shell](#rce-to-reverse-shell) - **Initial Foothold**
+5. [Pivoting](#pivoting) - **User Flag**
+6. [LinPEAS](#linpeas)
+7. [Ansible](#ansible)
+8. [Evil Playbook](#evil-playbook) - **Root Flag**
 
-## Reconnaisance 
+## Reconnaissance 
 
 #### Nmap
 
@@ -164,6 +164,8 @@ This box is set up to be hacked so everything here is put there for a reason.
 
 `su phil` works with the password from `/home/frank/.m2/settings.xml`
 
+Now I can get the user flag.
+- `cat user.txt`
 ## LinPeas
 
 Now I'm looking to escalate my privileges.

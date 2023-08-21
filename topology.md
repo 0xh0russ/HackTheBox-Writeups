@@ -7,6 +7,17 @@
 
 ![card | 600](./screenshots/topology_card.png)
 
+## Contents
+
+Highlighted sections are the ones that directly led to advancing access.
+
+1. [Scanning and Fingerprinting](#scanning-and-fingerprinting)
+2. [Web Enumeration](#web-enumeration)
+3. [Arbitrary File Read](#arbitrary-file-read)
+4. [Server Enumeration](#server-enumeration)
+5. [Password Cracking](#password-cracking) - **User Flag**
+6. [Enumeration for Privilege Escalation](#enumeration-for-privilege-escalation)
+7. [Command Injection in Gnuplot Files](#command-injection-in-gnuplot-files) - **Root** 
 ## Scanning and Fingerprinting
 
 As always. start with an Nmap scan to get a sense of where to start.
@@ -73,7 +84,7 @@ The only user with a shell here is `vdaisley`.
 
 Unfortunately, arbitrary file read on its own can't give me a foothold so back to enumeration.
 
-## More Enumeration with File Read
+## Server Enumeration
 
 Reading straight from `./equation.php` or `equation.php`. I randomly tried to go one directory above and it worked.
 `http://latex.topology.htb/equation.php?eqn=\text{\lstinputlisting{../equation.php}}&submit=`
@@ -100,7 +111,7 @@ The way apache handles authentication is through the `.htaccess` and `.htpasswd`
 
 If I can crack this hash I can see if the credentials are re-used for `ssh`.
 
-## Foothold - Password Cracking
+## Password Cracking
 
 To begin I just ran `hashid` to figure out what kind of hash I'm dealing with. I didn't want to copy the hash by hand so I used and online [OCR tool](https://www.newocr.com/). *Careful, there are a lot of ads.*
 - Here, thank me later: `$apr1$1ONUB/S2$58eeNVirnRDB5zAIbIxTY0`
@@ -113,7 +124,7 @@ Next, I cracked the hash using a dictionary attack with `hashcat` and `rockyou.t
 Now I can ssh onto the machine as `vdaisely`.
 ![User Flag | 600](./screenshots/topology_user.png)
 
-## Privilege Escalation - Enumeration
+## Enumeration for Privilege Escalation
 
 Now for the root flag. We need to escalate privilege so we go back to everyone's favorite part of the job... enumeration.
 
@@ -146,7 +157,7 @@ Looks like I don't have read permission on that directory so I can't list its co
 
 The write permission lets us delete, rename, and create files in that directory normally. In this case I can't modify or delete existing files because the OS needs to read the directory to find them in memory. That only leaves the file creation option since the `vdaisley` user can write to the directory.
 
-## Command Injection in Gnuplot files
+## Command Injection in Gnuplot Files
 
 I found this [article](https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/gnuplot-privilege-escalation/) about command injection in PLT files. Seems pretty straight forward, I just have to use the `system` keyword.
 
