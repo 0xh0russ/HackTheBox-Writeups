@@ -20,7 +20,7 @@ Highlighted sections are the ones that directly led to advancing access.
 7. [Command Injection in Gnuplot Files](#command-injection-in-gnuplot-files) - **Root Flag** 
 ## Scanning and Fingerprinting
 
-As always. start with an Nmap scan to get a sense of where to start.
+As always. start with an Nmap scan to get a sense of where to start.  
 `sudo nmap -sC -sS -sV -p- --min-rate=5000 -vvv -oG topology.nmap 10.10.11.217`
 - `-sC` - always run default scripts because they're safe and catch low hanging fruit.
 - `--min-rate=5000` - speed things up, wouldn't try with real hosts, hack the box VMs can handle it.
@@ -56,19 +56,19 @@ Just looking at the index page, under "Software Projects" there is a link to `ht
 ![LaTeX WebApp | 600](./screenshots/topology_latex_gen.png)
 
 Looks like you pass it some equations in LaTeX syntax and it returns an image with the rendered output. When I click "Generate" it makes a get request to the `/equation.php` file with the equation in a GET parameter.
-- `http://latex.topology.htb/equation.php?eqn=%5Calpha+%5Cbeta+%5Cgamma+%09&submit=`
+- `http://latex.topology.htb/equation.php?eqn=%5Calpha+%5Cbeta+%5Cgamma+%09&submit=`  
 
 That empty `submit` GET parameter is kinda suspicious but I feel like this is going in the arbitrary file read direction so that is something to look at later.
 
 Before moving on to the exploitation phase let me do some directory enumeration to check for other `php` files that may be accessible.
 
-`feroxbuster -u "http://latex.topology.htb/" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x txt -x html -x php -x tex`
+`feroxbuster -u "http://latex.topology.htb/" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x txt -x html -x php -x tex`  
 - Huh, seems like they are all directory listings. I'll take it.
 ![Directory Enumeration | 600](./screenshots/topology_ferox.png)
 
-The files that are interesting here are the `equationtest.*` and `header.tex` files. I downloaded all of them to look for clues.
-`wget http://latex.topology.htb/header.tex`
-`wget http://latex.topology.htb/equationtest.{out,png,aux,tex,pdf,log}`
+The files that are interesting here are the `equationtest.*` and `header.tex` files. I downloaded all of them to look for clues.  
+`wget http://latex.topology.htb/header.tex`  
+`wget http://latex.topology.htb/equationtest.{out,png,aux,tex,pdf,log}`  
 
 The `header.tex` file defines the list of included packages. It also has comments for the purpose of each package. On line #6, the `listings` package gives is used to include source code files. (this is probably it)
 
@@ -77,7 +77,7 @@ The `header.tex` file defines the list of included packages. It also has comment
 I looked up the `listings` package and I found this Overleaf [page](https://www.overleaf.com/learn/latex/Code_listing). According to this I can include external files using the `\lstinputlisting{<file_path>}` function. Trying just the function did not work so I thought this could be because our input is being dropped into a LaTeX math expression.
 
 The way to get around this is to wrap your function in `\text{}`.
-`http://latex.topology.htb/equation.php?eqn=\text{\lstinputlisting{%2Fetc%2Fpasswd}}&submit=`
+`http://latex.topology.htb/equation.php?eqn=\text{\lstinputlisting{%2Fetc%2Fpasswd}}&submit=`  
 ![Arbitrary File Read | 600](./screenshots/topology_passwd.png)
 
 The only user with a shell here is `vdaisley`. 
@@ -87,7 +87,7 @@ Unfortunately, arbitrary file read on its own can't give me a foothold so back t
 ## Server Enumeration
 
 Reading straight from `./equation.php` or `equation.php`. I randomly tried to go one directory above and it worked.
-`http://latex.topology.htb/equation.php?eqn=\text{\lstinputlisting{../equation.php}}&submit=`
+`http://latex.topology.htb/equation.php?eqn=\text{\lstinputlisting{../equation.php}}&submit=`  
 *Reading text from very large PNGs is a pain*
 
 This file is pretty simple and the user input is not being used in any unexpected ways.
