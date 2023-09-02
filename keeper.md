@@ -10,8 +10,8 @@
 ## Contents
 
 1. [Fingerprinting and Scanning](#fingerprinting-and-scanning)
-2. [Web Enumeration](#web-enumeration) - **User Flag**
-3. [Credential Reuse](#credential-reuse)
+2. [Web Enumeration](#web-enumeration)
+3. [Credential Reuse](#credential-reuse) - **User Flag**
 4. [Server Enumeration](#server-enumeration)
 5. [Leaking the Master Password](#leaking-the-master-password)
 6. [Reading the KeePass Database](#reading-the-keepass-database)
