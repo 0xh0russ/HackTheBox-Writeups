@@ -90,7 +90,7 @@ In the the home directory of the current user there is another file called `RT30
   
 ![Zip File | 400](./screenshots/keeper_zip.png)
   
-The KeePass database is password protected, we can extract the hash with `hash2john` and crack it but I'm holding back on that until I've exhausted my options. I'll try looking at the memory dump file first to see if there a plaintext password in there somewhere.  
+The KeePass database is password protected, we can extract the hash with `keepass2john` and crack it but I'm holding back on that until I've exhausted my options. I'll try looking at the memory dump file first to see if there a plaintext password in there somewhere.  
   
 I tried looking for a way to get the read the windows minidump file but its a pain to work with windows files on linux. After some googling I found a CVE (CVE-2023-32784) that leaks the master password from memory dumps for KeePass < 2.54. First I wanted to confirm that the version I currently have is correct.  
   
