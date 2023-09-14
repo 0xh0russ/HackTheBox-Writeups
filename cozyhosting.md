@@ -6,6 +6,20 @@
 
 ![card | 600](./screenshots/cozyhosting_card.png)
 
+## Contents
+
+Highlighted sections are the ones that directly led to advancing access.
+
+1. [Fingerprinting and Scanning](#fingerprinting-and-scanning)
+2. [Web Enumeration](#web-enumeration)
+3. [Session Hijacking](#session-hijacking)
+4. [Web Enumeration 2](#web-enumeration-2)
+5. [Command Injection](#command-injection) - **Initial Foothold**
+6. [Server Enumeration](#server-enumeration)
+7. [Database Enumeration](#database-enumeration)
+8. [Password Cracking](#password-cracking)
+9. [Credential Re-Use](#credential-re-use) - **User Flag**
+10. [Privilege Escalation](#privilege-escalation) - **Root Flag**
 ## Fingerprinting and Scanning
 
 Ok, lets see what we got.
@@ -239,7 +253,7 @@ Now we can start the attack:
   
 ![Cracked Password](./screenshots/cozyhosting_hashcat.png)  
   
-## Credential Re-use
+## Credential Re-Use
   
 Now that I cracked the password `manchesterunited`, I'll try to re-use it for the user `josh`.
 - `ssh josh@cozyhosting.htb`
